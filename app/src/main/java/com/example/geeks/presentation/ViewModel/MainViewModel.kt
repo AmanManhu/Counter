@@ -24,6 +24,7 @@ class MainViewModel(
     fun increment(){
         incrementUseCase()
         updateCounter()
+
     }
     fun decrement() {
         decrementUseCase()

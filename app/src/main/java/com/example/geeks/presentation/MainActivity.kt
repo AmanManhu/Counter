@@ -14,17 +14,12 @@ import com.example.geeks.domain.usecase.GetCountUseCase
 import com.example.geeks.domain.usecase.IncrementUseCase
 import com.example.geeks.domain.usecase.ResetUseCase
 import com.example.geeks.presentation.ViewModel.MainViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
-    private val dataSource = CountDataSource()
-    private val repository = CounterRepositoryImpl(dataSource = dataSource)
-    private val viewModel = MainViewModel(
-        getCountUseCase = GetCountUseCase(repository),
-        incrementUseCase = IncrementUseCase(repository),
-    decrementUseCase = DecrementUseCase(repository),
-        resetUseCase = ResetUseCase(repository),
-    )
+    private val viewModel: MainViewModel by viewModel()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
